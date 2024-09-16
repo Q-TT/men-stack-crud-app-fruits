@@ -1,0 +1,24 @@
+<body>
+    <!-- update the header -->
+    <a href="/">Homepage</a>
+    <a href="/fruits/new">Add New Fruit</a>
+    <a href="/fruits">Back to Fruits</a>
+    <h1>Edit <%= fruit.name %></h1>
+
+    <!-- The Edit form needs to make a PUT request to /fruits/:fruitID in the same way that the New form needs to make a POST request to /fruits. -->
+    <form action="/fruits/<%=fruit._id%>?_method=PUT" method="POST">
+    
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name" value="<%= fruit.name %>" />
+  
+      <label for="isReadyToEat">Ready to Eat?</label>
+      <input type="checkbox" 
+            name="isReadyToEat" 
+            id="isReadyToEat" 
+            <% if (fruit.isReadyToEat) { %>checked<% } %> />
+      <!-- update the button text -->
+      <button type="submit">Update Fruit</button>
+    </form>
+    
+</body>
+  

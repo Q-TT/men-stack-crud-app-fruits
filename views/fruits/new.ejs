@@ -1,0 +1,28 @@
+<!-- views/fruits/new.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create a Fruit</title>
+  </head>
+  <body>
+    <!-- views/fruits/new.ejs -->
+    <a href="/">Homepage</a>
+    <a href="/fruits/">Back to Fruits</a>
+
+    <h1>Create a New Fruit!</h1>
+
+    <!-- action and method. The action attribute specifies the URL where the form data should be sent when the form is submitted. In our case, it’s set to /fruits. The method attribute defines the HTTP method the browser should use to send the form data. We’ve set this to POST, which is appropriate for creating new data on the server. -->
+    <form action="/fruits" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" />
+    
+        <label for="isReadyToEat">Ready to Eat?</label>
+        <input type="checkbox" name="isReadyToEat" id="isReadyToEat" />
+    
+        <button type="submit">Add Fruit</button>
+    </form>
+  </body>
+</html>
