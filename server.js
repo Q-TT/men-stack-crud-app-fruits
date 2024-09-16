@@ -3,11 +3,12 @@
 const dotenv = require("dotenv")
 dotenv.config()
 const express = require("express");
+const app = express();
 const mongoose = require("mongoose");
 const methodOverride = require("method-override"); // new
 const morgan = require("morgan"); //new
+const path = require("path");
 
-const app = express();
 
 // Connect to MongoDB using the connection string in the .env file
 mongoose.connect(process.env.MONGODB_URI);
@@ -19,14 +20,17 @@ mongoose.connection.on("connected", () => {
 const Fruit = require("./models/fruit.js");
 // When a user submits the form on the /fruits/new page, the browser sends a request to our server with the form data. To access this data in Express, we need to use middleware. Specifically, we’ll use express.urlencoded
 
+
 // ========= MIDDLEWARE ============ //
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method")); // new
 //!why??
 app.use(morgan("dev")); //new
 //!why??
+app.use(express.static(path.join(__dirname, "public")))
 
 
+// ========= ROUTE ============ //
 app.get("/", (req,res) => {
     res.render("index.ejs")
 })
