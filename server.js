@@ -8,6 +8,10 @@ const mongoose = require("mongoose");
 const methodOverride = require("method-override"); // new
 const morgan = require("morgan"); //new
 const path = require("path");
+//!they are essentially all "libraries", but why in different color? what is the difference??
+//? different packages, the path id from node, it gives you the access to
+
+//! what are the exact difference between node and nodemon again??
 
 
 // Connect to MongoDB using the connection string in the .env file
@@ -27,8 +31,16 @@ app.use(methodOverride("_method")); // new
 //!why??
 app.use(morgan("dev")); //new
 //!why??
-app.use(express.static(path.join(__dirname, "public")))
+//? morgn is a logging package
 
+// app.use(express.static(path.join(__dirname, "public")))
+app.use("/public", express.static("public"))
+//!why??
+//? express.static takes care of all fie under "public", so that the clients can have access to it
+
+//! how do I know when I need a middleware?? and the correct syntax??
+//? app.use is just the syntax;
+//? it's a funtion in every request to the server
 
 // ========= ROUTE ============ //
 app.get("/", (req,res) => {
@@ -98,6 +110,8 @@ app.put("/fruits/:fruitId", async (req, res) => {
   });
 
   
-app.listen(3000, () => {
+app.listen(4000, () => {
   console.log("Listening on port 3000");
 });
+//! who can I deploy the app to a public web page? rather than local 3000, so that real users can use it
+//? render.com can host your server and deploy, and scale your apps 
